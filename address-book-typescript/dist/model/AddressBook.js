@@ -7,7 +7,6 @@ class AddressBook {
     }
     addAccount(contact) {
         this.contacts.push(contact);
-        console.log("Contact added succesfully....!");
     }
     getAllContacts() {
         console.log("📇 Contact List:");
