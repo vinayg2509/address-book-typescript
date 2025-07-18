@@ -1,4 +1,4 @@
-class ContactPerson{
+export class ContactPerson{
 
    constructor(
     public firstName:string,
@@ -17,4 +17,5 @@ class ContactPerson{
    }
 
    
+
 }
