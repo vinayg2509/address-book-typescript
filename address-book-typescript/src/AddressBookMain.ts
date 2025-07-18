@@ -1,17 +1,16 @@
+
 import * as readline from "readline-sync"
 import  {ContactPerson}  from "./model/ContactPerson";
 import { AddressBook } from './model/AddressBook';
-
 class AddressBookMain
 {
-   private addressBook = new AddressBook()
 
     welcomeToAddressBook():void
    {
      console.log("👋 Welcome to the Address Book Program");
    }
 
-   getContactFromUser():ContactPerson
+  getContactFromUser():ContactPerson
    {
     const firstName=readline.question("First name: ")
     const lastName=readline.question("Second name: ")
@@ -30,6 +29,7 @@ class AddressBookMain
     const personContact=this.getContactFromUser()
     this.addressBook.addAccount(personContact)
     this.addressBook.getAllContacts()
+ 
    }
    
 }
