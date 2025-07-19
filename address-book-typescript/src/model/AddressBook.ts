@@ -79,5 +79,21 @@ export class AddressBook{
           console.log("Contact not found");
           return false
     }
+
+    //*UC5-add-multiple-contacts-->Add multiple contact to address book
+    addMultipleContact():void
+    {
+        do{
+            const contact=this.getContactFromUser()
+            this.addAccount(contact)
+            const addMore=readline.question("\nDo you want to add more contact :").toLowerCase()
+            if(addMore!=="yes")
+            {
+              break;
+            }
+            
+        }while(true)
+
+    }
 }
 
