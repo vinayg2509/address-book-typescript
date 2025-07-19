@@ -20,8 +20,11 @@ class AddressBookMain
     const nameToEdit=readline.question("Enter first name to edit :")
 
     this.addressBook.editContact(nameToEdit,{})
-
     this.addressBook.getAllContacts()
+
+    const nameToDelete=readline.question("Enter first name to delete :")
+    this.addressBook.deleteContact(nameToDelete)
+
 
 
 

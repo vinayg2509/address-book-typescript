@@ -65,8 +65,8 @@ class AddressBook {
         if (contact) {
             Object.assign(contact, updateDetails);
             console.log("\nDo you want to edit this contact");
-            const choice = readline.question("Type 'yes' to edit ");
-            if (choice) {
+            const choice = readline.question("Type 'yes' to edit ").toLowerCase();
+            if (choice === 'yes') {
                 const newLastName = readline.question("Second name: ");
                 const newAddress = readline.question("Address: ");
                 const newCity = readline.question("City: ");
@@ -85,6 +85,17 @@ class AddressBook {
                 });
             }
             console.log("Contact updated succesfully");
+            return true;
+        }
+        console.log("Contact not found");
+        return false;
+    }
+    //*UC4-delete-contact-->Delete contact by first name
+    deleteContact(firstName) {
+        const index = this.contacts.findIndex(c => c.firstName === firstName);
+        if (index !== -1) {
+            this.contacts.splice(index, -1);
+            console.log("Contact deleted succesfully");
             return true;
         }
         console.log("Contact not found");

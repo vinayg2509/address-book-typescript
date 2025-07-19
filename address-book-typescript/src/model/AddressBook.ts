@@ -66,7 +66,18 @@ export class AddressBook{
     console.log("Contact not found");
     return false
   }
-    
-
+    //*UC4-delete-contact-->Delete contact by first name
+    deleteContact(firstName:string):boolean
+    {
+        const index = this.contacts.findIndex(c => c.firstName === firstName);
+        if(index!==-1)
+        {
+          this.contacts.splice(index,-1)
+          console.log("Contact deleted succesfully");
+          return true;
+        }
+          console.log("Contact not found");
+          return false
+    }
 }
 

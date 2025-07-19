@@ -48,8 +48,10 @@ class AddressBookMain {
         this.addressBook.addAccount(personContact);
         this.addressBook.getAllContacts();
         const nameToEdit = readline.question("Enter first name to edit :");
-        this.addressBook.editContact(nameToEdit, {});
-        this.addressBook.getAllContacts();
+        // this.addressBook.editContact(nameToEdit,{})
+        // this.addressBook.getAllContacts()
+        const nameToDelete = readline.question("Enter first name to edit :");
+        this.addressBook.deleteContact(nameToDelete);
     }
 }
 const addressApp = new AddressBookMain();
