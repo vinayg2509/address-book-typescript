@@ -5,10 +5,18 @@ export class AddressBook{
 
     private contacts:ContactPerson[]=[]
 
-    addAccount(contact:ContactPerson):void
-    {
-        this.contacts.push(contact)
+    addContact(contact: ContactPerson): void {
+    const exists = this.contacts.some(
+      c => c.getFullName() === contact.getFullName()
+    );
+
+    if (exists) {
+      console.log(`⚠️ Duplicate contact: '${contact.firstName} ${contact.lastName}' already exists!`);
+    } else {
+      this.contacts.push(contact);
+      console.log(`✅ Contact '${contact.firstName} ${contact.lastName}' added.`);
     }
+  }
     
     getAllContacts(): void 
     {
@@ -79,13 +87,12 @@ export class AddressBook{
           console.log("Contact not found");
           return false
     }
-
-    //*UC5-add-multiple-contacts-->Add multiple contact to address book
+      //*UC5-add-multiple-contacts-->Add multiple contact to address book
     addMultipleContact():void
     {
         do{
             const contact=this.getContactFromUser()
-            this.addAccount(contact)
+            this.addContact(contact)
             const addMore=readline.question("\nDo you want to add more contact :").toLowerCase()
             if(addMore!=="yes")
             {

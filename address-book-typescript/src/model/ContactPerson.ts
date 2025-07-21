@@ -16,6 +16,10 @@ export class ContactPerson{
           return `${this.firstName} ${this.lastName}, ${this.city}, ${this.state}, ${this.zipcode}, ${this.phoneNumber}, ${this.email}`;
    }
 
+   getFullName():string
+   {
+      return `${this.firstName} ${this.lastName}`
+   }
    
 
 }

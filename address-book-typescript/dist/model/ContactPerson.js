@@ -15,5 +15,8 @@ class ContactPerson {
     toString() {
         return `${this.firstName} ${this.lastName}, ${this.city}, ${this.state}, ${this.zipcode}, ${this.phoneNumber}, ${this.email}`;
     }
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
 }
 exports.ContactPerson = ContactPerson;

@@ -40,8 +40,15 @@ class AddressBook {
     constructor() {
         this.contacts = [];
     }
-    addAccount(contact) {
-        this.contacts.push(contact);
+    addContact(contact) {
+        const exists = this.contacts.some(c => c.getFullName() === contact.getFullName());
+        if (exists) {
+            console.log(`⚠️ Duplicate contact: '${contact.firstName} ${contact.lastName}' already exists!`);
+        }
+        else {
+            this.contacts.push(contact);
+            console.log(`✅ Contact '${contact.firstName} ${contact.lastName}' added.`);
+        }
     }
     getAllContacts() {
         console.log("📇 Contact List:");
@@ -105,7 +112,7 @@ class AddressBook {
     addMultipleContact() {
         do {
             const contact = this.getContactFromUser();
-            this.addAccount(contact);
+            this.addContact(contact);
             const addMore = readline.question("\nDo you want to add more contact :").toLowerCase();
             if (addMore !== "yes") {
                 break;
