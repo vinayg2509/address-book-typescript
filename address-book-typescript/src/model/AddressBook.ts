@@ -18,10 +18,11 @@ export class AddressBook{
     }
   }
     
-    getAllContacts(): void 
+    getAllContacts(): ContactPerson[]
     {
     console.log("📇 Contact List:");
     this.contacts.forEach((contact, i) => console.log(`${i + 1}. ${contact.toString()}`));
+    return this.contacts
     }
 
     //*UC2-Add-New-Contact-->Adding contact by taking I/P from console

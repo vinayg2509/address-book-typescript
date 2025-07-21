@@ -1,5 +1,6 @@
 import { AddressBook } from "./AddressBook";
 import * as readline from "readline-sync";
+import { ContactPerson } from "./ContactPerson";
 
 export class AddressBookManager {
     private addressBooks: Map<string, AddressBook> = new Map();
@@ -72,4 +73,25 @@ export class AddressBookManager {
             }
         }
     }
+     
+    getAddressBook(name: string): AddressBook | undefined {
+    return this.addressBooks.get(name);
+   }
+
+   searchByCity(city:string):ContactPerson[]
+   {
+    const result:ContactPerson[]=[]
+    this.addressBooks.forEach(book=>{
+        const found=book.getContact().filter()
+    })
+
+
+    return result
+   }
+
+
+
+
+
+
 }
