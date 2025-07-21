@@ -1,9 +1,11 @@
 import { AddressBook } from './model/AddressBook';
+import { AddressBookManager } from './model/AddressBookManager';
 import * as readline from "readline-sync"
 
 class AddressBookMain
 {
   private addressBook= new AddressBook()
+  private addressBookManager= new AddressBookManager()
 
     welcomeToAddressBook():void
    {
@@ -13,20 +15,32 @@ class AddressBookMain
    run():void
    {
     this.welcomeToAddressBook()
-    const personContact=this.addressBook.getContactFromUser()
-    this.addressBook.addAccount(personContact)
-    this.addressBook.getAllContacts()
+         while (true) 
+          {
+            console.log("\n📁 MAIN MENU");
+            console.log("1. Create Address Book");
+            console.log("2. Select Existing Address Book");
+            console.log("3. Exit");
 
-    const nameToEdit=readline.question("Enter first name to edit :")
+            const choice = parseInt(readline.question("Enter your choice: "));
 
-    this.addressBook.editContact(nameToEdit,{})
-
-    const nameToDelete=readline.question("Enter first name to delete :")
-    this.addressBook.deleteContact(nameToDelete)
-    this.addressBook.addMultipleContact()
-    this.addressBook.getAllContacts()
-
-
+            switch (choice) {
+                case 1:
+                    this.addressBookManager.addAddressBook();
+                    break;
+                case 2:
+                    const selectedBook = this.addressBookManager.selectAddressBook();
+                    if (selectedBook) {
+                        this.addressBookManager.manageAddressBook(selectedBook);
+                    }
+                    break;
+                case 3:
+                    console.log("👋 Exiting Address Book Program.");
+                    return;
+                default:
+                    console.log("❗ Invalid choice. Try again.");
+            }
+        }
 
    
 
