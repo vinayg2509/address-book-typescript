@@ -33,32 +33,42 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-const readline = __importStar(require("readline-sync"));
-const ContactPerson_1 = require("./model/ContactPerson");
 const AddressBook_1 = require("./model/AddressBook");
+const AddressBookManager_1 = require("./model/AddressBookManager");
+const readline = __importStar(require("readline-sync"));
 class AddressBookMain {
     constructor() {
         this.addressBook = new AddressBook_1.AddressBook();
+        this.addressBookManager = new AddressBookManager_1.AddressBookManager();
     }
     welcomeToAddressBook() {
         console.log("👋 Welcome to the Address Book Program");
     }
-    getContactFromUser() {
-        const firstName = readline.question("First name: ");
-        const lastName = readline.question("Second name: ");
-        const address = readline.question("Address: ");
-        const city = readline.question("City: ");
-        const state = readline.question("State: ");
-        const zipcode = parseInt(readline.question("Zipcode: "));
-        const phoneNumber = parseInt(readline.question("Phone Number: "));
-        const email = readline.question("Email: ");
-        return new ContactPerson_1.ContactPerson(firstName, lastName, address, city, state, zipcode, phoneNumber, email);
-    }
     run() {
         this.welcomeToAddressBook();
-        const personContact = this.getContactFromUser();
-        this.addressBook.addAccount(personContact);
-        this.addressBook.getAllContacts();
+        while (true) {
+            console.log("\n📁 MAIN MENU");
+            console.log("1. Create Address Book");
+            console.log("2. Select Existing Address Book");
+            console.log("3. Exit");
+            const choice = parseInt(readline.question("Enter your choice: "));
+            switch (choice) {
+                case 1:
+                    this.addressBookManager.addAddressBook();
+                    break;
+                case 2:
+                    const selectedBook = this.addressBookManager.selectAddressBook();
+                    if (selectedBook) {
+                        this.addressBookManager.manageAddressBook(selectedBook);
+                    }
+                    break;
+                case 3:
+                    console.log("👋 Exiting Address Book Program.");
+                    return;
+                default:
+                    console.log("❗ Invalid choice. Try again.");
+            }
+        }
     }
 }
 const addressApp = new AddressBookMain();
